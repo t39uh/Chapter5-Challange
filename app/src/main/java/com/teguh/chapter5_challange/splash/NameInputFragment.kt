@@ -16,10 +16,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [BasicFragment.newInstance] factory method to
+ * Use the [NameInputFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BasicFragment : Fragment() {
+class NameInputFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: Int? = null
     private var param2: String? = null
@@ -36,10 +36,9 @@ class BasicFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val layout = inflater.inflate(R.layout.fragment_basic, container, false)
-        layout.findViewById<ImageView>(R.id.img_frg_basic)?.setImageResource(param1!!)
-        layout.findViewById<TextView>(R.id.tv_fragment_basic).text = param2
+        val layout = inflater.inflate(R.layout.fragment_name_input, container, false)
+        layout.findViewById<ImageView>(R.id.img_frg_nameinput)?.setImageResource(param1!!)
+        layout.findViewById<TextView>(R.id.tv_frg_nameinput).text = param2
         return layout
     }
 
@@ -50,12 +49,12 @@ class BasicFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment BasicFragment.
+         * @return A new instance of fragment NameInputFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: Int, param2: String) =
-            BasicFragment().apply {
+            NameInputFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

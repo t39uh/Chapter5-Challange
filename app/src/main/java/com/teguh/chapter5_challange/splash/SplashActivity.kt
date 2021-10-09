@@ -2,9 +2,6 @@ package com.teguh.chapter5_challange.splash
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.teguh.chapter5_challange.R
 
@@ -21,8 +18,9 @@ class SplashActivity : AppCompatActivity() {
 
         viewPager.adapter = pagerAdapter
 
-        pagerAdapter.addFragment(BasicFragment.newInstance("first","first"))
-        pagerAdapter.addFragment(BasicFragment.newInstance("second","second"))
+        pagerAdapter.addFragment(BasicFragment.newInstance(R.drawable.ic_landing_page1,"Bermain suit melawan sesama\npemain"))
+        pagerAdapter.addFragment(BasicFragment.newInstance(R.drawable.ic_landing_page2,"Bermain suit melawan \nkomputer"))
+        pagerAdapter.addFragment(NameInputFragment.newInstance(R.drawable.ic_landing_page3,"Tuliskan namamu dibawah"))
     }
 
     override fun onBackPressed() {
