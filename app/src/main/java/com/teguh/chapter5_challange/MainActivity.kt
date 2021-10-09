@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import coil.load
+import com.teguh.chapter5_challange.splash.SplashActivity
 import java.util.*
 import kotlin.concurrent.schedule
 
