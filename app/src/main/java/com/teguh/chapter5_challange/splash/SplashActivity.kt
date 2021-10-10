@@ -1,5 +1,6 @@
 package com.teguh.chapter5_challange.splash
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +9,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+import com.teguh.chapter5_challange.GameModeActivity
 import com.teguh.chapter5_challange.R
 import com.teguh.chapter5_challange.databinding.ActivitySplashBinding
+import com.teguh.chapter5_challange.src.Player
 
 class SplashActivity : AppCompatActivity() {
 
@@ -37,10 +40,11 @@ class SplashActivity : AppCompatActivity() {
 
         imgNext.setOnClickListener {
             if (viewPager.currentItem == pagerAdapter.itemCount-1){
-                Log.i("TAG", "onCreate: ")
                 val et = findViewById<EditText>(R.id.et_nameinput)
                 if (et.text.length>2){
-                    Log.i("TAG", et.text.toString())
+                    val gameModePage = Intent(this, GameModeActivity::class.java)
+                    gameModePage.putExtra("PlayerData", Player(et.text.toString(),null))
+                    startActivity(gameModePage)
                 } else {
                     Log.i("TAG", "noting")
                 }
