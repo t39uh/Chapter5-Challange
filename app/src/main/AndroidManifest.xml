@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Chapter5Challange">
         <activity
+            android:name=".ChoosePlayModeActivity"
+            android:exported="true" />
+        <activity
             android:name=".splash.SplashActivity"
             android:exported="true" />
         <activity

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.teguh.chapter5_challange.R
@@ -39,6 +40,9 @@ class NameInputFragment : Fragment() {
         val layout = inflater.inflate(R.layout.fragment_name_input, container, false)
         layout.findViewById<ImageView>(R.id.img_frg_nameinput)?.setImageResource(param1!!)
         layout.findViewById<TextView>(R.id.tv_frg_nameinput).text = param2
+
+        val name = layout.findViewById<EditText>(R.id.et_nameinput)
+
         return layout
     }
 
