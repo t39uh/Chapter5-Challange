@@ -2,4 +2,7 @@
     <string name="app_name">Chapter5 - Challange</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rock">ROCK</string>
+    <string name="scissors">SCISSOR</string>
+    <string name="paper">PAPER</string>
 </resources>

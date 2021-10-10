@@ -10,7 +10,7 @@ class GameModeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_mode)
         val player = intent.getParcelableExtra<Player>("PlayerData")
-        findViewById<TextView>(R.id.tv_gmode_player).text = "${player!!.nama} VS Pemain"
-        findViewById<TextView>(R.id.tv_gmode_cpu).text = "${player!!.nama} VS CPU"
+        findViewById<TextView>(R.id.tv_gmode_player).text = "${player?.nama} VS Pemain"
+        findViewById<TextView>(R.id.tv_gmode_cpu).text = "${player?.nama} VS CPU"
     }
 }

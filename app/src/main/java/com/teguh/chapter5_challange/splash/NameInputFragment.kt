@@ -41,7 +41,7 @@ class NameInputFragment : Fragment() {
         layout.findViewById<ImageView>(R.id.img_frg_nameinput)?.setImageResource(param1!!)
         layout.findViewById<TextView>(R.id.tv_frg_nameinput).text = param2
 
-        val name = layout.findViewById<EditText>(R.id.et_nameinput)
+        //val name = layout.findViewById<EditText>(R.id.et_nameinput)
 
         return layout
     }

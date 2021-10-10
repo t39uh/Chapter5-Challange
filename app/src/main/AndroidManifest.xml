@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Chapter5Challange">
         <activity
+            android:name=".PlayingActivity"
+            android:exported="true" />
+        <activity
             android:name=".GameModeActivity"
             android:exported="true" />
         <activity
