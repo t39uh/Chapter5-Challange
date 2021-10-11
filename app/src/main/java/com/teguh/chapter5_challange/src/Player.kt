@@ -5,4 +5,4 @@ import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
-class Player(val nama: String, var handFace : String?):Parcelable
+class Player(val nama: String?, var handFace: String?):Parcelable

@@ -5,4 +5,7 @@
     <string name="rock">ROCK</string>
     <string name="scissors">SCISSOR</string>
     <string name="paper">PAPER</string>
+    <string name="cpu_user">CPU</string>
+    <string name="human_user">Pemain 2</string>
+    <string name="parcelPlayer">PlayerData</string>
 </resources>

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import com.teguh.chapter5_challange.GameModeActivity

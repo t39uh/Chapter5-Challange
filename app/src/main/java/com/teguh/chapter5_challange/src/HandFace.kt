@@ -1,7 +1,5 @@
 package com.teguh.chapter5_challange.src
 
-import java.sql.BatchUpdateException
-
 class HandFace{
     companion object{
         const val GUNTING = "gunting"
@@ -11,7 +9,6 @@ class HandFace{
         const val DRAW = "draw"
         const val LOSE = "lose"
         val position = mapOf<String, Int>(GUNTING to 1, BATU to 2, KERTAS to 3)
-
         fun winOrLose(hand1 : String, hand2: String) : String{
             val count = position[hand1]!! - position[hand2]!!
             if (hand1 == hand2) {
