@@ -13,6 +13,7 @@
         android:layout_marginTop="32dp"
         android:text="PILIH LAWANMU"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/img_vs_player"
         app:layout_constraintStart_toStartOf="@+id/img_vs_player"
         app:layout_constraintTop_toBottomOf="@+id/img_vs_player" />
@@ -53,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/img_vs_cpu"
         app:layout_constraintStart_toStartOf="@+id/img_vs_cpu"
         app:layout_constraintTop_toBottomOf="@+id/img_vs_cpu" />

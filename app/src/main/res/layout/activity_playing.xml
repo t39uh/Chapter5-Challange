@@ -90,6 +90,7 @@
         android:rotation="-18"
         android:text="VS"
         android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/img_user_scissors"

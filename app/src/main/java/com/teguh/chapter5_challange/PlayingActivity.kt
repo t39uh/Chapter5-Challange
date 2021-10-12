@@ -94,8 +94,6 @@ class PlayingActivity : AppCompatActivity() {
 
     private fun getWinner() {
         result = HandFace.winOrLose(player1?.handFace!!, player2?.handFace!!)
-        Toast.makeText(this, "Result = $result", Toast.LENGTH_SHORT).show()
-        //WinnerDialogFragment().show(supportFragmentManager,"winnerFragment")
         var winner = ""
         var status = "MENANG!"
         if (result == HandFace.WIN){

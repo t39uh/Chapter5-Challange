@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import com.teguh.chapter5_challange.GameModeActivity
@@ -40,12 +41,12 @@ class SplashActivity : AppCompatActivity() {
         imgNext.setOnClickListener {
             if (viewPager.currentItem == pagerAdapter.itemCount-1){
                 val et = findViewById<EditText>(R.id.et_nameinput)
-                if (et.text.length>2){
+                if (et.text.isNotEmpty()){
                     val gameModePage = Intent(this, GameModeActivity::class.java)
                     gameModePage.putExtra("PlayerData", Player(et.text.toString(),null))
                     startActivity(gameModePage)
                 } else {
-                    Log.i("TAG", "noting")
+                    Toast.makeText(this, "Please fill your name", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 viewPager.setCurrentItem(viewPager.currentItem + 1, true)
@@ -55,11 +56,8 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         if (viewPager.currentItem == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
             super.onBackPressed()
         } else {
-            // Otherwise, select the previous step.
             viewPager.currentItem = viewPager.currentItem - 1
         }
     }

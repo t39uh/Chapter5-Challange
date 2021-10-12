@@ -12,9 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hasil Permainan"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:id="@+id/tv_winner_name"
@@ -22,6 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -31,6 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_winner_name" />
@@ -41,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Main Lagi"
+        android:backgroundTint="@color/orange"
         app:layout_constraintEnd_toEndOf="@+id/btn_kembalikemenu"
         app:layout_constraintStart_toStartOf="@+id/btn_kembalikemenu"
         app:layout_constraintTop_toBottomOf="@+id/tv_winner_result" />
@@ -49,8 +56,11 @@
         android:id="@+id/btn_kembalikemenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kembali ke Main"
+        android:text="Kembali ke Menu"
+        android:backgroundTint="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_mainlagi" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_mainlagi"
+        android:layout_marginBottom="8dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

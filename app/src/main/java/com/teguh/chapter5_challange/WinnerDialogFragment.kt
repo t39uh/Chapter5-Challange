@@ -41,7 +41,7 @@ class WinnerDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        getDialog()!!.getWindow()?.setBackgroundDrawableResource(R.drawable.rounded_corner_frame);
+        getDialog()!!.getWindow()?.setBackgroundDrawableResource(R.drawable.rounded_corner_white);
         val view = inflater.inflate(R.layout.fragment_winner_dialog, container, false)
         view.findViewById<TextView>(R.id.tv_winner_name).text = param1
         view.findViewById<TextView>(R.id.tv_winner_result).text = param2
@@ -49,12 +49,12 @@ class WinnerDialogFragment : DialogFragment() {
             TODO("hide test")
         }
         view.findViewById<Button>(R.id.btn_mainlagi).setOnClickListener {
-            (activity as PlayingActivity).startPlay()
             dismiss()
+            (activity as PlayingActivity).startPlay()
         }
         view.findViewById<Button>(R.id.btn_kembalikemenu).setOnClickListener {
-            (activity as PlayingActivity).returnToMain()
             dismiss()
+            (activity as PlayingActivity).returnToMain()
         }
         return view
     }
@@ -62,7 +62,7 @@ class WinnerDialogFragment : DialogFragment() {
     override fun onStart() {
         super.onStart()
         val width = (resources.displayMetrics.widthPixels * 0.65).toInt()
-        val height = (resources.displayMetrics.heightPixels * 0.70).toInt()
+        //val height = (resources.displayMetrics.heightPixels * 0.80).toInt()
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 

@@ -18,9 +18,6 @@
             android:name=".GameModeActivity"
             android:exported="true" />
         <activity
-            android:name=".ChoosePlayModeActivity"
-            android:exported="true" />
-        <activity
             android:name=".splash.SplashActivity"
             android:exported="true" />
         <activity
