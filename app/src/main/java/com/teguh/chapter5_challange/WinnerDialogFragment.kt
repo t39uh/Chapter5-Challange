@@ -45,9 +45,6 @@ class WinnerDialogFragment : DialogFragment() {
         val view = inflater.inflate(R.layout.fragment_winner_dialog, container, false)
         view.findViewById<TextView>(R.id.tv_winner_name).text = param1
         view.findViewById<TextView>(R.id.tv_winner_result).text = param2
-        if (param1 == ""){
-            TODO("hide test")
-        }
         view.findViewById<Button>(R.id.btn_mainlagi).setOnClickListener {
             dismiss()
             (activity as PlayingActivity).startPlay()
