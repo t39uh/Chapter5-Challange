@@ -1,5 +1,6 @@
 package com.teguh.chapter5_challange
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,11 +17,16 @@ class PlayingActivity : AppCompatActivity() {
     private lateinit var result: String
     private var player1 : Player? = null
     private var player2 : Player? = null
+    private lateinit var listOfComHand : List<ImageView>
+    private lateinit var listOfUserHand : List<ImageView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        listOfComHand = listOf(binding.imgComPaper, binding.imgComRock, binding.imgComScissors)
+        listOfUserHand = listOf(binding.imgUserPaper, binding.imgUserRock, binding.imgUserScissors)
 
         player1 = intent.getParcelableExtra<Player>(getString(R.string.parcelPlayer))
         player2 = Player(intent.getStringExtra("opponent"),null)
@@ -31,7 +37,10 @@ class PlayingActivity : AppCompatActivity() {
         startPlay()
     }
 
-    private fun startPlay() {
+    fun startPlay() {
+        for (img in listOf(binding.imgUserPaper, binding.imgUserRock, binding.imgUserScissors, binding.imgComScissors, binding.imgComRock, binding.imgComPaper)){
+            img.setBackgroundColor(Color.TRANSPARENT)
+        }
         player1?.handFace = null
         player2?.handFace = null
         unblockPlayer1Choice()
@@ -64,16 +73,16 @@ class PlayingActivity : AppCompatActivity() {
             toggleOpponentHand(binding.imgComScissors)
         }
         binding.imgRefresh.setOnClickListener {
-            for (img in listOf(binding.imgUserPaper, binding.imgUserRock, binding.imgUserScissors, binding.imgComScissors, binding.imgComRock, binding.imgComPaper)){
-                img.setBackgroundColor(Color.TRANSPARENT)
-                startPlay()
-            }
+            startPlay()
+        }
+        binding.imgClose.setOnClickListener {
+            returnToMain()
         }
     }
 
     private fun toggleOpponentHand(imgOpponent : ImageView) {
         imgOpponent.setBackgroundResource((R.drawable.rounded_corner_frame))
-        for (hand in listOf(binding.imgComPaper, binding.imgComRock, binding.imgComScissors)) {
+        for (hand in listOfComHand) {
             if (hand.tag != player2?.handFace) {
                 hand.setBackgroundColor(Color.TRANSPARENT)
             }
@@ -84,13 +93,25 @@ class PlayingActivity : AppCompatActivity() {
     }
 
     private fun getWinner() {
-        val result = HandFace.winOrLose(player1?.handFace!!, player2?.handFace!!)
+        result = HandFace.winOrLose(player1?.handFace!!, player2?.handFace!!)
         Toast.makeText(this, "Result = $result", Toast.LENGTH_SHORT).show()
+        //WinnerDialogFragment().show(supportFragmentManager,"winnerFragment")
+        var winner = ""
+        var status = "MENANG!"
+        if (result == HandFace.WIN){
+            winner = player1?.nama!!
+        } else if (result == HandFace.LOSE){
+            winner = player2?.nama!!
+        } else {
+            winner = ""
+            status = "SERI!"
+        }
+        WinnerDialogFragment.newInstance(winner, status).show(supportFragmentManager,"winnerFragment")
     }
 
     private fun toggleUserHand(imgUser : ImageView) {
         imgUser.setBackgroundResource(R.drawable.rounded_corner_frame)
-        for (hand in listOf(binding.imgUserPaper, binding.imgUserRock, binding.imgUserScissors)) {
+        for (hand in listOfUserHand) {
             if (hand.tag != player1?.handFace) {
                 hand.setBackgroundColor(Color.TRANSPARENT)
             }
@@ -105,7 +126,7 @@ class PlayingActivity : AppCompatActivity() {
             unblockPlayer2Choice()
         } else{
             player2?.handFace = HandFace.generateRandomChoice()
-            for (hand in listOf(binding.imgComPaper, binding.imgComRock, binding.imgComScissors)){
+            for (hand in listOfComHand){
                 if (hand.tag == player2?.handFace){
                     toggleOpponentHand(hand)
                 }
@@ -114,26 +135,32 @@ class PlayingActivity : AppCompatActivity() {
     }
 
     private fun blockPlayer1Choice(){
-        for (hand in listOf(binding.imgUserPaper, binding.imgUserRock, binding.imgUserScissors)){
+        for (hand in listOfUserHand){
             hand.isClickable = false
         }
     }
 
     private fun unblockPlayer1Choice(){
-        for (hand in listOf(binding.imgUserPaper, binding.imgUserRock, binding.imgUserScissors)){
+        for (hand in listOfUserHand){
             hand.isClickable = true
         }
     }
 
     private fun blockPlayer2Choice(){
-        for (hand in listOf(binding.imgComPaper, binding.imgComRock, binding.imgComScissors)){
+        for (hand in listOfComHand){
             hand.isClickable = false
         }
     }
 
     private fun unblockPlayer2Choice(){
-        for (hand in listOf(binding.imgComPaper, binding.imgComRock, binding.imgComScissors)){
+        for (hand in listOfComHand){
             hand.isClickable = true
         }
+    }
+
+    fun returnToMain(){
+        val gameModePage = Intent(this, GameModeActivity::class.java)
+        gameModePage.putExtra("PlayerData", player1)
+        startActivity(gameModePage)
     }
 }

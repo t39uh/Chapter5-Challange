@@ -3,7 +3,9 @@ package com.teguh.chapter5_challange
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
+import com.google.android.material.snackbar.Snackbar
 import com.teguh.chapter5_challange.databinding.ActivityGameModeBinding
 import com.teguh.chapter5_challange.src.Player
 
@@ -18,6 +20,11 @@ class GameModeActivity : AppCompatActivity() {
         val player = intent.getParcelableExtra<Player>(getString(R.string.parcelPlayer))
         findViewById<TextView>(R.id.tv_gmode_player).text = "${player?.nama} VS Pemain"
         findViewById<TextView>(R.id.tv_gmode_cpu).text = "${player?.nama} VS CPU"
+        val snackbar = Snackbar.make(binding.textView2, "Selamat Datang ${player?.nama}", Snackbar.LENGTH_INDEFINITE)
+        snackbar.setAction("Tutup", View.OnClickListener {
+                snackbar.dismiss()
+            })
+        snackbar.show()
 
         val playing = Intent(this, PlayingActivity::class.java)
         playing.putExtra("PlayerData", player)
