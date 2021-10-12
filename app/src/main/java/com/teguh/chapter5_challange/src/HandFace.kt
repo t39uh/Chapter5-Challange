@@ -2,9 +2,9 @@ package com.teguh.chapter5_challange.src
 
 class HandFace{
     companion object{
-        const val GUNTING = "gunting"
-        const val BATU = "batu"
-        const val KERTAS = "kertas"
+        const val GUNTING = "SCISSOR"
+        const val BATU = "ROCK"
+        const val KERTAS = "PAPER"
         const val WIN = "win"
         const val DRAW = "draw"
         const val LOSE = "lose"

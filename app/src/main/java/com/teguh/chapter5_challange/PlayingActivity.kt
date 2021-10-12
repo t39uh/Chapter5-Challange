@@ -4,7 +4,9 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.Toast
 import com.teguh.chapter5_challange.databinding.ActivityPlayingBinding
+import com.teguh.chapter5_challange.src.HandFace
 import com.teguh.chapter5_challange.src.Player
 
 class PlayingActivity : AppCompatActivity() {
@@ -26,11 +28,14 @@ class PlayingActivity : AppCompatActivity() {
         binding.tvOpponentname.text = player2?.nama.toString()
 
         putAllListener()
-        play()
+        startPlay()
     }
 
-    private fun play() {
-        TODO("Not yet implemented")
+    private fun startPlay() {
+        player1?.handFace = null
+        player2?.handFace = null
+        unblockPlayer1Choice()
+        blockPlayer2Choice()
     }
 
     private fun putAllListener() {
@@ -61,9 +66,8 @@ class PlayingActivity : AppCompatActivity() {
         binding.imgRefresh.setOnClickListener {
             for (img in listOf(binding.imgUserPaper, binding.imgUserRock, binding.imgUserScissors, binding.imgComScissors, binding.imgComRock, binding.imgComPaper)){
                 img.setBackgroundColor(Color.TRANSPARENT)
+                startPlay()
             }
-            player1?.handFace = null
-            player2?.handFace = null
         }
     }
 
@@ -74,6 +78,14 @@ class PlayingActivity : AppCompatActivity() {
                 hand.setBackgroundColor(Color.TRANSPARENT)
             }
         }
+        blockPlayer2Choice()
+        Toast.makeText(this, "${player2?.nama} memilih ${player2?.handFace}", Toast.LENGTH_SHORT).show()
+        getWinner()
+    }
+
+    private fun getWinner() {
+        val result = HandFace.winOrLose(player1?.handFace!!, player2?.handFace!!)
+        Toast.makeText(this, "Result = $result", Toast.LENGTH_SHORT).show()
     }
 
     private fun toggleUserHand(imgUser : ImageView) {
@@ -81,6 +93,22 @@ class PlayingActivity : AppCompatActivity() {
         for (hand in listOf(binding.imgUserPaper, binding.imgUserRock, binding.imgUserScissors)) {
             if (hand.tag != player1?.handFace) {
                 hand.setBackgroundColor(Color.TRANSPARENT)
+            }
+        }
+        Toast.makeText(this, "${player1?.nama} memilih ${player1?.handFace}", Toast.LENGTH_SHORT).show()
+        blockPlayer1Choice()
+        getOpponentInput()
+    }
+
+    private fun getOpponentInput() {
+        if (player2?.nama == getString(R.string.human_user)){
+            unblockPlayer2Choice()
+        } else{
+            player2?.handFace = HandFace.generateRandomChoice()
+            for (hand in listOf(binding.imgComPaper, binding.imgComRock, binding.imgComScissors)){
+                if (hand.tag == player2?.handFace){
+                    toggleOpponentHand(hand)
+                }
             }
         }
     }
@@ -108,5 +136,4 @@ class PlayingActivity : AppCompatActivity() {
             hand.isClickable = true
         }
     }
-
 }
